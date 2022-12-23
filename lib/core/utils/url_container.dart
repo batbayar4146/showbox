@@ -8,7 +8,7 @@ class UrlContainer {
   static const String liveTvDetailsEndPoint = 'api/live-tv/';
 
   static const String registrationEndPoint = 'api/register';
-  static const String loginEndPoint = 'api/login';
+  static const String loginEndPoint = 'v1/login';
   static const String userDashboardEndPoint = 'user/dashboard';
   static const String userLogoutEndPoint = 'api/user/logout';
   static const String forgetPasswordEndPoint = 'api/password/email';

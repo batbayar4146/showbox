@@ -19,12 +19,12 @@ class LoginRepo extends GetConnect {
   LoginRepo({required this.sharedPreferences, required this.apiClient});
 
   Future<ResponseModel> loginUser(String email, String password) async {
-    Map<String, String> map = {'username': email, 'password': password};
+    Map<String, String> map = {'email': email, 'password': password};
 
     String url = '${UrlContainer.baseUrl}${UrlContainer.loginEndPoint}';
 
     ResponseModel model = await apiClient.request(url, Method.postMethod, map, passHeader: false);
-
+    print(model);
     return model;
   }
 

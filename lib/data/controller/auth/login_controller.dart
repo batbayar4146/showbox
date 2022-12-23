@@ -32,9 +32,6 @@ class LoginController extends GetxController {
   }
 
   void checkAndGotoNextStep(LoginResponseModel responseModel) async {
-    bool needEmailVerification = responseModel.data?.user?.ev == "1" ? false : true;
-    bool needSmsVerification = responseModel.data?.user?.sv == '1' ? false : true;
-
     if (remember) {
       await loginRepo.apiClient.sharedPreferences.setBool(SharedPreferenceHelper.rememberMeKey, true);
     } else {
@@ -49,22 +46,6 @@ class LoginController extends GetxController {
         .setString(SharedPreferenceHelper.userEmailKey, responseModel.data?.user?.email ?? '');
     await loginRepo.apiClient.sharedPreferences
         .setString(SharedPreferenceHelper.userPhoneNumberKey, responseModel.data?.user?.mobile ?? '');
-    await loginRepo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.userNameKey,
-        '${responseModel.data?.user?.firstname ?? ''} ${responseModel.data?.user?.lastname ?? ''}');
-
-    if (needSmsVerification == false && needEmailVerification == false) {
-      if (responseModel.data?.user?.regStep == '0') {
-        Get.offAndToNamed(RouteHelper.profileComplete);
-      } else {
-        Get.offAndToNamed(RouteHelper.homeScreen);
-      }
-    } else if (needSmsVerification == true && needEmailVerification == true) {
-      Get.offAndToNamed(RouteHelper.emailVerificationScreen, arguments: true);
-    } else if (needSmsVerification) {
-      Get.offAndToNamed(RouteHelper.smsVerificationScreen);
-    } else if (needEmailVerification) {
-      Get.offAndToNamed(RouteHelper.emailVerificationScreen, arguments: false);
-    }
 
     changeIsLoading();
     if (remember) {
