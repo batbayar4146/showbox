@@ -1,5 +1,6 @@
 class UrlContainer {
   static const String baseUrl = 'https://www.showbox.mn/api/';
+  static const String baseUrl1 = 'https://script.viserlab.com/playlab/demo/';
 
   static const String splashLogoEndPoint = 'v1/logo';
   static const String onboardingEndPoint = 'v1/welcome_info';
@@ -8,7 +9,7 @@ class UrlContainer {
   static const String liveTvDetailsEndPoint = 'api/live-tv/';
 
   static const String registrationEndPoint = 'api/register';
-  static const String loginEndPoint = 'v1/login';
+  static const String loginEndPoint = 'api/login';
   static const String userDashboardEndPoint = 'user/dashboard';
   static const String userLogoutEndPoint = 'api/user/logout';
   static const String forgetPasswordEndPoint = 'api/password/email';
